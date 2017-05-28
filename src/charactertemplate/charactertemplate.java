@@ -382,7 +382,7 @@ public class charactertemplate {
         System.out.println("Escape Artist: " + escart + " (Class Skill: " + classskillcheck(cs_escart) + ")");
         System.out.println("Fly: " + fly + " (Class Skill: " + classskillcheck(cs_fly) + ")");
         System.out.println("Handle Animal: " + hanani + " (Class Skill: " + classskillcheck(cs_hanani) + ")");
-        System.out.println("Heal: " + heal + " (Class Skill: " + classskillcheck(cs_bluff) + ")");
+        System.out.println("Heal: " + heal + " (Class Skill: " + classskillcheck(cs_heal) + ")");
     }
 
     private String classskillcheck(boolean csboolean){
