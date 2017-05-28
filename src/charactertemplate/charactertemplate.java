@@ -2,70 +2,80 @@ package charactertemplate;
 
 import java.util.Arrays;
 
+import java.io.File;
+import java.io.IOException;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
+
 /**
  * Created by Sterling on 2017-05-25.
  */
 
 public class charactertemplate {
+
     // Character
-    private String playername = "Sterling Best";
-    private String charactername = "Logan";
+    public String playername;
+    public String charactername;
 
     //Roleplay details
-    public String alignment = "Nuetral Good";
-    public String race = "Human";
-    String size = "Medium";
-    String gender = "Male";
-    int age = 34;
-    int weight = 156;
-    String hair = "Brown";
-    String diety = "God";
-    String homeland = "Canada";
+    public String alignment;
+    public String race;
+    String size;
+    String gender;
+    int age;
+    int weight;
+    String hair;
+    String diety;
+    String homeland;
 
     //Lvl EXP
-    int exp = 900;
-    int totlvl = 3;
-    String[] classes = {"Fighter", "Wizard"};
-    int[] classlvl = {2, 1};
+    int exp;
+    int totlvl;
+    String[] classes = {};
+    int[] classlvl = {};
 
     // Ability Stats
-    int STR = 10;
-    int DEX = 10;
-    int CON = 10;
-    int INT = 10;
-    int WIS = 10;
-    int CHA = 10;
+    int STR;
+    int DEX;
+    int CON;
+    int INT;
+    int WIS;
+    int CHA;
 
     // Ability Modifiers
-    int strmod = 0;
-    int dexmod = 0;
-    int conmod = 0;
-    int intmod = 0;
-    int wismod = 0;
-    int chamod = 0;
+    int strmod;
+    int dexmod;
+    int conmod;
+    int intmod;
+    int wismod;
+    int chamod;
 
     //Combat
-    int initiative = 0;
-    double hp = 24.0;
-    String[] damred = {"10/cold iron"};
-    int ac = 14;
-    int touchac = 10;
-    int ffac = 10;
-    int bab = 2;
-    int sizemod = 0;
-    int melee = 2;
-    int range = 2;
-    int splres = 0;
-    int cmb = 2;
-    int cmd = 12;
+    int initiative;
+    int hp;
+    String[] damred;
+    int ac;
+    int touchac;
+    int ffac;
+    int bab;
+    int sizemod;
+    int melee;
+    int range;
+    int splres;
+    int cmbonus;
+    int cmdefense;
 
     //Saving throws
-    int sav_fort = 3;
-    int sav_ref = 0;
-    int sav_wil = 3;
+    int sav_fort;
+    int sav_ref;
+    int sav_wil;
 
     //Speed
-    int basespeed = 30;
+    int basespeed;
 
     //Skills
     //Boolean with CS represents class skills, bonus +3.
@@ -79,7 +89,7 @@ public class charactertemplate {
     int climb = 0;
     boolean cs_craft = false;
     int craft = 0;
-    boolean cs_displomacy = false;
+    boolean cs_diplomacy = false;
     int diplomacy = 0;
     boolean cs_disdev = false;
     int disdev = 0;
@@ -137,25 +147,121 @@ public class charactertemplate {
     //Languages
     String[] languages = {"Common"};
 
-    public static void main(String[] args) {
+    String inputFile;
+
+    public charactertemplate() {
+    }
+
+    public static void main(String[] args) throws IOException {
         charactertemplate a = new charactertemplate();
+        a.setInputFile("D:\\Users\\Methlodis\\OneDrive\\Terminus\\RoleplayCharacterApp\\data\\characterdata.xls");
+        a.extractdata("#1");
         a.print();
     }
+
+    //--Read Character from Spreadsheet--\\
+
+    public void setInputFile(String inputFile) {
+        this.inputFile = inputFile;
+    }
+
+    public void extractdata(String charid) throws IOException  {
+        File inputWorkbook = new File(inputFile);
+        Workbook w;
+        try {
+            w = Workbook.getWorkbook(inputWorkbook);
+            // Get the first sheet
+            Sheet sheet = w.getSheet(0);
+            Cell targetid = sheet.findCell(charid);
+            int targetrow = targetid.getRow();
+            //Character
+            this.playername = assignstring(sheet, 1, targetrow);
+            this.charactername = assignstring(sheet, 2, targetrow);
+            //Roleplay Details
+            this.alignment = assignstring(sheet, 3, targetrow);
+            this.race = assignstring(sheet, 4, targetrow);
+            this.size = assignstring(sheet, 5, targetrow);
+            this.gender = assignstring(sheet, 6, targetrow);
+            this.age = assignint(sheet, 7, targetrow);
+            this.weight = assignint(sheet, 8, targetrow);
+            this.hair = assignstring(sheet, 9, targetrow);
+            this.diety = assignstring(sheet, 10, targetrow);
+            this.homeland = assignstring(sheet, 11, targetrow);
+            //Lvl-Class-Exp
+            this.exp = assignint(sheet, 12, targetrow);
+            this.totlvl = assignint(sheet, 13, targetrow);
+            //Need to add classes
+            //need to add class levels
+            //Ability Stats
+            this.STR = assignint(sheet, 15, targetrow);
+            this.DEX = assignint(sheet, 16, targetrow);
+            this.CON = assignint(sheet, 17, targetrow);
+            this.INT = assignint(sheet, 18, targetrow);
+            this.WIS = assignint(sheet, 19, targetrow);
+            this.CHA = assignint(sheet, 20, targetrow);
+            //Ability Modifiers
+            this.strmod = assignint(sheet, 21, targetrow);
+            this.dexmod = assignint(sheet, 22, targetrow);
+            this.conmod = assignint(sheet, 23, targetrow);
+            this.intmod = assignint(sheet, 24, targetrow);
+            this.wismod = assignint(sheet, 25, targetrow);
+            this.chamod = assignint(sheet, 26, targetrow);
+            //Combat
+            this.initiative = assignint(sheet, 27, targetrow);
+            this.hp = assignint(sheet, 28, targetrow);
+            this.ac = assignint(sheet, 29, targetrow);
+            this.touchac = assignint(sheet, 30, targetrow);
+            this.ffac = assignint(sheet, 31, targetrow);
+            this.bab = assignint(sheet, 32, targetrow);
+            this.sizemod = assignint(sheet, 33, targetrow);
+            this.melee = assignint(sheet, 34, targetrow);
+            this.range = assignint(sheet, 35, targetrow);
+            this.splres = assignint(sheet, 36, targetrow);
+            this.cmbonus = assignint(sheet, 37, targetrow);
+            this.cmdefense = assignint(sheet, 38, targetrow);
+            //Saving Throw
+            this.sav_fort = assignint(sheet, 39, targetrow);
+            this.sav_ref = assignint(sheet, 40, targetrow);
+            this.sav_wil = assignint(sheet, 41, targetrow);
+            //Speed Stats
+            this.basespeed = assignint(sheet, 42, targetrow);
+        } catch (BiffException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String assignstring(Sheet target, int col, int row){
+        Cell cell = target.getCell(col, row);
+        return cell.getContents();
+    }
+
+    private int assignint(Sheet target, int col, int row){
+        Cell cell = target.getCell(col, row);
+        String contents  = cell.getContents();
+        return Integer.parseInt(contents);
+    }
+
+    //--Printing Functions--\\
+    //To display stats of object
 
     public void print() {
         printnames();
         printroleplay();
         printlvlexp();
         printabilstats();
+        printcombat();
+        printsavingthrows();
+        printspeedstats();
+        printskillstats();
     }
 
-    public void printnames() {
+    private void printnames() {
         System.out.println(playername);
         System.out.println( "--" + charactername + "--");
         System.out.println("");
     }
 
-    public void printroleplay() {
+    private void printroleplay() {
         System.out.println( "//Roleplay\\\\");
         System.out.println("Alignment: " + alignment);
         System.out.println("Race: " + race);
@@ -169,7 +275,7 @@ public class charactertemplate {
         System.out.println("");
     }
 
-    public void printlvlexp() {
+    private void printlvlexp() {
         System.out.println("//Level/Exp/Class\\\\");
         System.out.println("Experience: " + exp);
         System.out.println("Level: " + totlvl);
@@ -180,7 +286,7 @@ public class charactertemplate {
         System.out.println("");
     }
 
-    public void printabilstats() {
+    private void printabilstats() {
         System.out.println("//Ability Stats\\\\");
         System.out.println("Strength: " + STR);
         if (strmod >= 0) {
@@ -218,5 +324,66 @@ public class charactertemplate {
         }else{
             System.out.println("Charisma Modifier: " + chamod);
         }
+        System.out.println("");
     }
+
+    private void printcombat() {
+        System.out.println("//Combat Stats\\\\");
+        System.out.println("Initiative: " + initiative);
+        System.out.println("Hit Points: " + hp);
+        System.out.println("-Armor Class-");
+        System.out.println("Armor Class: " + ac);
+        System.out.println("Touch Armor Class: " + touchac);
+        System.out.println("Flat Footed Armor Class: +" + ffac);
+        System.out.println("-Damage Bonus-");
+        System.out.println("Base Damage Bonus: " + bab);
+        System.out.println("Size Modifier: " + sizemod);
+        System.out.println("Melee Damage Bonus: " + melee);
+        System.out.println("Range Damage Bonus: " + range);
+        System.out.println("-Resistence-");
+        System.out.println("Spell Resistence: " + splres);
+        System.out.println("-Combat Maneuvers-");
+        System.out.println("Combat Maneuver Bonus: " + cmbonus);
+        System.out.println("Combat Maneuver Defense: " + cmdefense);
+        System.out.println("");
+    }
+
+    private void printsavingthrows() {
+        System.out.println("//Saving Throws\\\\");
+        System.out.println("Fortitude Save (Con): " + sav_fort);
+        System.out.println("Reflex Save (Dex): " + sav_ref);
+        System.out.println("Will Save (Wil): " + sav_wil);
+        System.out.println("");
+    }
+
+    private void printspeedstats() {
+        System.out.println("//Speed Stats\\\\");
+        System.out.println("Base Speed: " + basespeed);
+        System.out.println("");
+    }
+
+    private void printskillstats() {
+        System.out.println("//Skill Stats\\\\");
+        System.out.println("Acrobatics: " + acrobatics + " (Class Skill: " + classskillcheck(cs_acrobatics) + ")");
+        System.out.println("Appraise: " + appraise + " (Class Skill: " + classskillcheck(cs_appriase) + ")");
+        System.out.println("Bluff: " + bluff + " (Class Skill: " + classskillcheck(cs_bluff) + ")");
+        System.out.println("Climb: " + climb + " (Class Skill: " + classskillcheck(cs_climb) + ")");
+        System.out.println("Craft: " + craft + " (Class Skill: " + classskillcheck(cs_craft) + ")");
+        System.out.println("Diplomacy: " + diplomacy + " (Class Skill: " + classskillcheck(cs_diplomacy) + ")");
+        System.out.println("Disable Device: " + disdev + " (Class Skill: " + classskillcheck(cs_disdev) + ")");
+        System.out.println("Disguise: " + disguise + " (Class Skill: " + classskillcheck(cs_disguise) + ")");
+        System.out.println("Escape Artist: " + escart + " (Class Skill: " + classskillcheck(cs_escart) + ")");
+        System.out.println("Fly: " + fly + " (Class Skill: " + classskillcheck(cs_fly) + ")");
+        System.out.println("Handle Animal: " + hanani + " (Class Skill: " + classskillcheck(cs_hanani) + ")");
+        System.out.println("Heal: " + heal + " (Class Skill: " + classskillcheck(cs_bluff) + ")");
+    }
+
+    private String classskillcheck(boolean csboolean){
+        if (csboolean){
+            return "Yes";
+        }else{
+            return "No";
+        }
+    }
+
 }
