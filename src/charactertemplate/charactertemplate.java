@@ -11,8 +11,15 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 
+
 /**
- * Created by Sterling on 2017-05-25.
+ * Character Template Representation
+ *
+ * Extracts data from selected spreadsheet and applies to variables. The prints character info in a text format.
+ *
+ * Using JExcelAPI for excel document manipulation.
+ * https://sourceforge.net/projects/jexcelapi/?source=navbar
+ * JExcelAPI documentation: http://jexcelapi.sourceforge.net/resources/javadocs/2_6_10/docs/index.html
  */
 
 public class charactertemplate {
