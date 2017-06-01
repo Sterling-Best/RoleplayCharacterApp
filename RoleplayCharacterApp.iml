@@ -8,5 +8,15 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jxl" level="project" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="library" name="pdfbox-2.0.6" level="project" />
+    <orderEntry type="library" name="commons-logging-1.2" level="project" />
+    <orderEntry type="library" name="fontbox-2.0.6" level="project" />
+    <orderEntry type="library" name="pdfbox-debugger-2.0.6" level="project" />
+    <orderEntry type="library" name="pdfbox-tools-2.0.6" level="project" />
+    <orderEntry type="library" name="preflight-2.0.6" level="project" />
+    <orderEntry type="library" name="xmpbox-2.0.6" level="project" />
+>>>>>>> Test1Branch
   </component>
 </module>
