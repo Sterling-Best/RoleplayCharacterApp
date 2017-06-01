@@ -1,10 +1,8 @@
 package charactertemplate;
 
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 import java.io.File;
-import java.nio.file.*;
 import java.io.IOException;
 
 import jxl.Cell;
@@ -82,12 +80,12 @@ public class charactertemplate {
     int cmDefense;
 
     //Saving throws
-    int sav_fort;
-    int sav_ref;
-    int sav_wil;
+    int savThrowFortitude;
+    int savThrowReflex;
+    int savThrowWisdom;
 
     //Speed
-    int basespeed;
+    int baseSpeed;
 
     //Skills
     //Boolean with CS represents class skills, bonus +3.
@@ -117,44 +115,50 @@ public class charactertemplate {
     int heal = 0;
     boolean cs_intimidate = false;
     int intimidate = 0;
-    boolean cs_arcaneknw = false;
-    int arcaneknw = 0;
-    boolean cs_dungknw = false;
-    int dungknw = 0;
-    boolean cs_engknw = false;
-    int engknw = 0;
-    boolean cs_hisknw= false;
-    int hisknw = 0;
-    boolean cs_locknw = false;
-    int locknw = 0;
-    boolean cs_nobknw = false;
-    int nobknw = 0;
-    boolean cs_planknw = false;
-    int planknw = 0;
-    boolean cs_relknw = false;
-    int relknw = 0;
+    boolean cs_knowledgeArcana = false;
+    int knowledgeArcana = 0;
+    boolean cs_knowledgeDungeoneering = false;
+    int knowledgeDungeoneering = 0;
+    boolean cs_knowledgeEngineering = false;
+    int knowledgeEngineering = 0;
+    boolean cs_knowledgeGeography = false;
+    int knowledgeGeography = 0;
+    boolean cs_knowledgeHistory = false;
+    int knowledgeHistory = 0;
+    boolean cs_knowledgeLocal = false;
+    int knowledgeLocal = 0;
+    boolean cs_knowledgeNature = false;
+    int knowledgeNature = 0;
+    boolean cs_knowledgeNobility = false;
+    int knowledgeNobility = 0;
+    boolean cs_knowledgePlanes = false;
+    int knowledgePlanes = 0;
+    boolean cs_knowledgeReligion = false;
+    int knowledgeReligion = 0;
     boolean cs_linguistics = false;
     int linguistics = 0;
     boolean cs_perception = false;
     int perception = 0;
     boolean cs_perform = false;
     int perform = 0;
+    boolean cs_profession = false;
+    int profession = 0;
     boolean cs_ride = false;
     int ride = 0;
-    boolean cs_senmot = false;
-    int senmot = 0;
-    boolean cs_slghthnd = false;
-    int slghthnd = 0;
-    boolean cs_spllcrft = false;
-    int splcrft = 0;
+    boolean cs_senseMotive = false;
+    int senseMotive = 0;
+    boolean cs_slieghtOfHand = false;
+    int slieghtOfHand = 0;
+    boolean cs_spellcraft = false;
+    int spelllcraft = 0;
     boolean cs_stealth = false;
     int stealth = 0;
     boolean cs_survival = false;
     int survival = 0;
     boolean cs_swim = false;
     int swim = 0;
-    boolean cs_umd = false;
-    int umd = 0;
+    boolean cs_useMagicDevice = false;
+    int useMagicDevice = 0;
 
     //Languages
     String[] languages = {"Common"};
@@ -208,6 +212,12 @@ public class charactertemplate {
     private String pt_spellResistance;
     private String pt_cmBonus;
     private String pt_cmDefense;
+    //Saving Throws
+    private String pt_savThrowFortitude;
+    private String pt_savThrowReflex;
+    private String pt_savThrowWisdom;
+    //Speed
+    private String pt_baseSpeed;
     //Skills
     private String pt_acrobatics;
     private String pt_appraise;
@@ -221,10 +231,31 @@ public class charactertemplate {
     private String pt_fly;
     private String pt_handleAnimal;
     private String pt_heal;
-    //Todo: Finish Skills
+    private String pt_intimidate;
+    private String pt_knowledgeArcana;
+    private String pt_knowledgeDungeoneering;
+    private String pt_knowledgeEngineering;
+    private String pt_knowledgeGeography;
+    private String pt_knowledgeHistory;
+    private String pt_knowledgeLocal;
+    private String pt_knowledgeNature;
+    private String pt_knowledgeNobility;
+    private String pt_knowledgePlanes;
+    private String pt_knowledgeReligion;
+    private String pt_linguistics;
+    private String pt_perception;
+    private String pt_perform;
+    private String pt_profession;
+    private String pt_ride;
+    private String pt_senseMotive;
+    private String pt_sleightOfHand;
+    private String pt_spellcraft;
+    private String pt_stealth;
+    private String pt_survival;
+    private String pt_swim;
+    private String pt_useMagicalDevice;
 
-
-
+    //====================\\
 
     ////Code Variables\\\\-
     String inputFile;
@@ -296,6 +327,12 @@ public class charactertemplate {
         pt_spellResistance = "Spell Resistance: " + spellResistance;
         pt_cmBonus = "Combat Maneuvering Bonus: " + cmBonus;
         pt_cmDefense = "Combat Maneuvering Defense: " + cmDefense;
+        //Saving Throws
+        pt_savThrowFortitude = "Fortitude Save (Con): " + savThrowFortitude;
+        pt_savThrowReflex = "Reflex Save (Dex): " + savThrowReflex;
+        pt_savThrowWisdom = "Will Save (Wis): " + savThrowWisdom;
+        //Speed
+        pt_baseSpeed = "Base Speed: " + baseSpeed;
         //Skills
         pt_acrobatics = "(DEX) Acrobatics: " + acrobatics + " (Class Skill: " + classskillcheck(cs_acrobatics) + ")";
         pt_appraise = "(INT) Appraise: " + appraise + " (Class Skill: " + classskillcheck(cs_appriase) + ")";
@@ -303,14 +340,35 @@ public class charactertemplate {
         pt_climb = "(STR) Climb: " + climb + " (Class Skill: " + classskillcheck(cs_climb) + ")";
         pt_craft = "(INT) Craft: " + craft + " (Class Skill: " + classskillcheck(cs_craft) + ")";
         pt_diplomacy = "(CHA) Diplomacy: " + diplomacy + " (Class Skill: " + classskillcheck(cs_diplomacy) + ")";
-        pt_disableDevice = "(DEX) Disable Device: " + disableDevice + " (Class Skill: " + classskillcheck(cs_disableDevice) + ")";
+        pt_disableDevice = "(DEX) Disable Device*: " + disableDevice + " (Class Skill: " + classskillcheck(cs_disableDevice) + ")";
         pt_disguise = "(CHA) Disguise: " + disguise + " (Class Skill: " + classskillcheck(cs_disguise) + ")";
         pt_escapeArtist = "(DEX) Escape Artist: " + escapeArtist + " (Class Skill: " + classskillcheck(cs_escapeArtist) + ")";
         pt_fly = "(DEX) Fly: " + fly + " (Class Skill: " + classskillcheck(cs_fly) + ")";
-        pt_handleAnimal = "(CHA) Handle Animal: " + handleAnimal + " (Class Skill: " + classskillcheck(cs_handleAnimal) + ")";
+        pt_handleAnimal = "(CHA) Handle Animal*: " + handleAnimal + " (Class Skill: " + classskillcheck(cs_handleAnimal) + ")";
         pt_heal = "(WIS) Heal: " + heal + " (Class Skill: " + classskillcheck(cs_heal) + ")";
-        //Todo: Finish Skills
-
+        pt_intimidate = "(CHA) Intimidate: " + intimidate + " (Class Skill: " + classskillcheck(cs_intimidate) + ")";
+        pt_knowledgeArcana = "(INT) Knowledge (Arcana)*: " + knowledgeArcana + " (Class Skill: " + classskillcheck(cs_knowledgeArcana) + ")";
+        pt_knowledgeDungeoneering = "(INT) Knowledge (Dungeoneering)*: " + knowledgeDungeoneering + " (Class Skill: " + classskillcheck(cs_knowledgeDungeoneering) + ")";
+        pt_knowledgeEngineering = "(INT) Knowledge (Engineering)*: " + knowledgeEngineering + " (Class Skill: " + classskillcheck(cs_knowledgeEngineering) + ")";
+        pt_knowledgeGeography = "(INT) Knowledge (Geography)*: " + knowledgeGeography + " (Class Skill: " + classskillcheck(cs_knowledgeGeography) + ")";
+        pt_knowledgeHistory = "(INT) Knowledge (History)*: " + knowledgeHistory + " (Class Skill: " + classskillcheck(cs_knowledgeHistory) + ")";
+        pt_knowledgeLocal = "(INT) Knowledge (Local)*: " + knowledgeLocal + " (Class Skill: " + classskillcheck(cs_knowledgeLocal) + ")";
+        pt_knowledgeNature = "(INT) Knowledge (Nature)*: " + knowledgeNature + " (Class Skill: " + classskillcheck(cs_knowledgeNature) + ")";
+        pt_knowledgeNobility = "(INT) Knowledge (Nobility)*: " + knowledgeNobility + " (Class Skill: " + classskillcheck(cs_knowledgeNobility) + ")";
+        pt_knowledgePlanes = "(INT) Knowledge (Planes)*: " + knowledgePlanes + " (Class Skill: " + classskillcheck(cs_knowledgePlanes) + ")";
+        pt_knowledgeReligion = "(INT) Knowledge (Religion)*: " + knowledgeReligion + " (Class Skill: " + classskillcheck(cs_knowledgeReligion) + ")";
+        pt_linguistics = "(INT) Linguistics*: " + linguistics + " (Class Skill: " + classskillcheck(cs_linguistics) + ")";
+        pt_perception = "(WIS) Perception: " + perception + " (Class Skill: " + classskillcheck(cs_perception) + ")";
+        pt_perform  = "(CHA) Perform: " + perform + " (Class Skill: " + classskillcheck(cs_perform) + ")";
+        pt_profession = "(WIS) Profession*: " + profession + " (Class Skill: " + classskillcheck(cs_profession) + ")";
+        pt_ride = "(DEX) Ride " + ride + " (Class Skill: " + classskillcheck(cs_ride) + ")";
+        pt_senseMotive = "(WIS) Sense Motive: " + senseMotive + " (Class Skill: " + classskillcheck(cs_senseMotive) + ")";
+        pt_sleightOfHand = "(DEX) Sleight of Hand*: " + slieghtOfHand + " (Class Skill: " + classskillcheck(cs_slieghtOfHand) + ")";
+        pt_spellcraft = "(INT) Spellcraft*: " + spelllcraft + " (Class Skill: " + classskillcheck(cs_spellcraft) + ")";
+        pt_stealth = "(DEX) Stealth: " + stealth + " (Class Skill: " + classskillcheck(cs_stealth) + ")";
+        pt_survival = "(WIS) Survival: " + survival + " (Class Skill: " + classskillcheck(cs_survival) + ")";
+        pt_swim = "(STR) Swim: " + swim + " (Class Skill: " + classskillcheck(cs_swim) + ")";
+        pt_useMagicalDevice = "(CHA) Use Magic Device*: " + useMagicDevice + " (Class Skill: " + classskillcheck(cs_useMagicDevice) + ")";
     }
 
     //Stat Format Methods
@@ -399,11 +457,11 @@ public class charactertemplate {
             this.cmBonus = assignint(sheet, 37, targetrow);
             this.cmDefense = assignint(sheet, 38, targetrow);
             //Saving Throw
-            this.sav_fort = assignint(sheet, 39, targetrow);
-            this.sav_ref = assignint(sheet, 40, targetrow);
-            this.sav_wil = assignint(sheet, 41, targetrow);
+            this.savThrowFortitude = assignint(sheet, 39, targetrow);
+            this.savThrowReflex = assignint(sheet, 40, targetrow);
+            this.savThrowWisdom = assignint(sheet, 41, targetrow);
             //Speed Stats
-            this.basespeed = assignint(sheet, 42, targetrow);
+            this.baseSpeed = assignint(sheet, 42, targetrow);
 
             //----------\\
             //Update other variables;
@@ -443,29 +501,29 @@ public class charactertemplate {
     }
 
     private void printnames() {
-        System.out.println(playerName);
-        System.out.println( "--" + characterName + "--");
+        System.out.println(pt_playerName);
+        System.out.println(pt_characterName);
         System.out.println("");
     }
 
     private void printroleplay() {
         System.out.println( "//Roleplay\\\\");
-        System.out.println("Alignment: " + alignment);
-        System.out.println("Race: " + race);
-        System.out.println("Size: " + size);
-        System.out.println("Gender: " + gender);
-        System.out.println("Age: " + age);
-        System.out.println("Weight: " + weight + " lbs");
-        System.out.println("Hair: " + hair);
-        System.out.println("Diety: " + deity);
-        System.out.println("Homeland: " + homeland);
+        System.out.println(pt_alignment);
+        System.out.println(pt_race);
+        System.out.println(pt_size);
+        System.out.println(pt_gender);
+        System.out.println(pt_age);
+        System.out.println(pt_weight);
+        System.out.println(pt_weight);
+        System.out.println(pt_deity);
+        System.out.println(pt_homeland);
         System.out.println("");
     }
 
     private void printlvlexp() {
         System.out.println("//Level/Exp/Class\\\\");
-        System.out.println("Experience: " + experience);
-        System.out.println("Level: " + totalLevel);
+        System.out.println(pt_experience);
+        System.out.println(pt_totalLevel);
         for (String cl: classes){
             int index = Arrays.asList(classes).indexOf(cl);
             System.out.println("Class: " + cl + " (" + classlvl[index] + ")");
@@ -475,94 +533,95 @@ public class charactertemplate {
 
     private void printabilstats() {
         System.out.println("//Ability Stats\\\\");
-        System.out.println("Strength: " + strength);
-        if (strModifier >= 0) {
-            System.out.println("Strength Modifier: +" + strModifier);
-        }else{
-            System.out.println("Strength Modifier: " + strModifier);
-        }
-        System.out.println("Dexterity: " + dexterity);
-        if (dexModifier >= 0) {
-            System.out.println("Dexterity Modifier: +" + dexModifier);
-        }else{
-            System.out.println("Dexterity Modifier: " + strModifier);
-        }
-        System.out.println("Constitution: " + constitution);
-        if (dexModifier >= 0) {
-            System.out.println("Constitution Modifier: +" + conModifier);
-        }else{
-            System.out.println("Constitution Modifier: " + conModifier);
-        }
-        System.out.println("Intelligence: " + intelligence);
-        if (dexModifier >= 0) {
-            System.out.println("Intelligence Modifier: +" + intModifier);
-        }else{
-            System.out.println("Intelligence Modifier: " + intModifier);
-        }
-        System.out.println("Wisdom: " + wisdom);
-        if (dexModifier >= 0) {
-            System.out.println("Wisdom Modifier: +" + wisModifier);
-        }else{
-            System.out.println("Wisdom Modifier: " + wisModifier);
-        }
-        System.out.println("Charisma: " + charisma);
-        if (dexModifier >= 0) {
-            System.out.println("Charisma Modifier: +" + charModifier);
-        }else{
-            System.out.println("Charisma Modifier: " + charModifier);
-        }
+        System.out.println(pt_strength);
+        System.out.println(pt_strModifier);
+        System.out.println(pt_dexterity);
+        System.out.println(pt_dexModifier);
+        System.out.println(pt_constitution);
+        System.out.println(pt_conModifier);
+        System.out.println(pt_intelligence);
+        System.out.println(pt_intModifier);
+        System.out.println(pt_wisdom);
+        System.out.println(pt_wisModifier);
+        System.out.println(pt_charisma);
+        System.out.println(pt_chaModifier);
         System.out.println("");
     }
 
     private void printcombat() {
         System.out.println("//Combat Stats\\\\");
-        System.out.println("Initiative: " + initiative);
-        System.out.println("Hit Points: " + maxHitPoints);
+        System.out.println(pt_initiative);
+        System.out.println(pt_maxHitPoints);
         System.out.println("-Armor Class-");
-        System.out.println("Armor Class: " + armorClass);
-        System.out.println("Touch Armor Class: " + touchArmorClass);
-        System.out.println("Flat Footed Armor Class: +" + flatFootedArmorClass);
+        System.out.println(pt_armorClass);
+        System.out.println(pt_touchArmorClass);
+        System.out.println(pt_flatFootedArmorClass);
         System.out.println("-Damage Bonus-");
-        System.out.println("Base Damage Bonus: " + baseAttackBonus);
-        System.out.println("Size Modifier: " + sizeAttackModifier);
-        System.out.println("Melee Damage Bonus: " + meleeAttackBonus);
-        System.out.println("Range Damage Bonus: " + rangeAttackBonus);
+        System.out.println(pt_baseAttackBonus);
+        System.out.println(pt_sizeAttackModifier);
+        System.out.println(pt_meleeAttackBonus);
+        System.out.println(pt_rangeAttackBonus);
         System.out.println("-Resistence-");
-        System.out.println("Spell Resistence: " + spellResistance);
+        System.out.println(pt_spellResistance);
         System.out.println("-Combat Maneuvers-");
-        System.out.println("Combat Maneuver Bonus: " + cmBonus);
-        System.out.println("Combat Maneuver Defense: " + cmDefense);
+        System.out.println(pt_cmBonus);
+        System.out.println(pt_cmDefense);
         System.out.println("");
     }
 
     private void printsavingthrows() {
         System.out.println("//Saving Throws\\\\");
-        System.out.println("Fortitude Save (Con): " + sav_fort);
-        System.out.println("Reflex Save (Dex): " + sav_ref);
-        System.out.println("Will Save (Wil): " + sav_wil);
+        System.out.println(pt_savThrowFortitude);
+        System.out.println(pt_savThrowReflex);
+        System.out.println(pt_savThrowWisdom);
         System.out.println("");
     }
 
     private void printspeedstats() {
         System.out.println("//Speed Stats\\\\");
-        System.out.println("Base Speed: " + basespeed);
+        System.out.println(pt_baseSpeed);
         System.out.println("");
     }
 
     private void printskillstats() {
         System.out.println("//Skill Stats\\\\");
-        System.out.println("Acrobatics: " + acrobatics + " (Class Skill: " + classskillcheck(cs_acrobatics) + ")");
-        System.out.println("Appraise: " + appraise + " (Class Skill: " + classskillcheck(cs_appriase) + ")");
-        System.out.println("Bluff: " + bluff + " (Class Skill: " + classskillcheck(cs_bluff) + ")");
-        System.out.println("Climb: " + climb + " (Class Skill: " + classskillcheck(cs_climb) + ")");
-        System.out.println("Craft: " + craft + " (Class Skill: " + classskillcheck(cs_craft) + ")");
-        System.out.println("Diplomacy: " + diplomacy + " (Class Skill: " + classskillcheck(cs_diplomacy) + ")");
-        System.out.println("Disable Device: " + disableDevice + " (Class Skill: " + classskillcheck(cs_disableDevice) + ")");
-        System.out.println("Disguise: " + disguise + " (Class Skill: " + classskillcheck(cs_disguise) + ")");
-        System.out.println("Escape Artist: " + escapeArtist + " (Class Skill: " + classskillcheck(cs_escapeArtist) + ")");
-        System.out.println("Fly: " + fly + " (Class Skill: " + classskillcheck(cs_fly) + ")");
-        System.out.println("Handle Animal: " + handleAnimal + " (Class Skill: " + classskillcheck(cs_handleAnimal) + ")");
-        System.out.println("Heal: " + heal + " (Class Skill: " + classskillcheck(cs_heal) + ")");
+        System.out.println(pt_acrobatics);
+        System.out.println(pt_appraise);
+        System.out.println(pt_bluff);
+        System.out.println(pt_climb);
+        System.out.println(pt_craft);
+        System.out.println(pt_diplomacy);
+        System.out.println(pt_disableDevice);
+        System.out.println(pt_disguise);
+        System.out.println(pt_escapeArtist);
+        System.out.println(pt_fly);
+        System.out.println(pt_handleAnimal);
+        System.out.println(pt_heal);
+        System.out.println(pt_intimidate);
+        System.out.println(pt_knowledgeArcana);
+        System.out.println(pt_knowledgeDungeoneering);
+        System.out.println(pt_knowledgeEngineering);
+        System.out.println(pt_knowledgeGeography);
+        System.out.println(pt_knowledgeHistory);
+        System.out.println(pt_knowledgeLocal);
+        System.out.println(pt_knowledgeNature);
+        System.out.println(pt_knowledgeNobility);
+        System.out.println(pt_knowledgeNobility);
+        System.out.println(pt_knowledgePlanes);
+        System.out.println(pt_knowledgeReligion);
+        System.out.println(pt_linguistics);
+        System.out.println(pt_perception);
+        System.out.println(pt_perform);
+        System.out.println(pt_profession);
+        System.out.println(pt_ride);
+        System.out.println(pt_senseMotive);
+        System.out.println(pt_sleightOfHand);
+        System.out.println(pt_spellcraft);
+        System.out.println(pt_stealth);
+        System.out.println(pt_survival);
+        System.out.println(pt_swim);
+        System.out.println(pt_useMagicalDevice);
+        System.out.println("");
     }
 
     //====================\\
@@ -570,8 +629,8 @@ public class charactertemplate {
 
     //====================\\
     //--Import to PDF--\\
-
     //Plain Text PDF\\
+
     private void createplaintextpdftemplate() throws IOException {
         System.out.println("");
         System.out.println("//------------------------------\\\\");
@@ -596,7 +655,7 @@ public class charactertemplate {
             System.out.println("-Start Writing Header");
             statsStream.setFont(PDType1Font.TIMES_ROMAN, 12);
             statsStream.setLeading(14.5f);
-            statsStream.newLineAtOffset(25, 750);
+            statsStream.newLineAtOffset(25, 775);
             System.out.println("-Set Header Specifications");
 
             //Names
@@ -616,7 +675,7 @@ public class charactertemplate {
             System.out.println("-Start Writing Stats Column");
             statsStream.setFont(PDType1Font.TIMES_ROMAN, 12);
             statsStream.setLeading(14.5f);
-            statsStream.newLineAtOffset(25, 700);
+            statsStream.newLineAtOffset(25, 725);
             System.out.println("-Set Stats Column Specifications");
 
             //Roleplay
@@ -684,6 +743,7 @@ public class charactertemplate {
 
             //Combat Stats\\
             statsStream.showText("//Combat Stats\\\\");
+            statsStream.newLine();
             statsStream.showText(pt_initiative);
             statsStream.newLine();
             statsStream.showText(pt_maxHitPoints);
@@ -711,6 +771,24 @@ public class charactertemplate {
             statsStream.newLine();
             statsStream.newLine();
 
+            //Saving Throws\\
+            statsStream.showText("//Saving Throws\\\\");
+            statsStream.newLine();
+            statsStream.showText(pt_savThrowFortitude);
+            statsStream.newLine();
+            statsStream.showText(pt_savThrowReflex);
+            statsStream.newLine();
+            statsStream.showText(pt_savThrowWisdom);
+            statsStream.newLine();
+            statsStream.newLine();
+
+            //Base Speed
+            statsStream.showText("//Speed\\\\");
+            statsStream.newLine();
+            statsStream.showText(pt_baseSpeed);
+            statsStream.newLine();
+            statsStream.newLine();
+
             //Finish Stats Column
             statsStream.endText();
 
@@ -719,7 +797,7 @@ public class charactertemplate {
             System.out.println("-Start Writing Header");
             statsStream.setFont(PDType1Font.TIMES_ROMAN, 12);
             statsStream.setLeading(14.5f);
-            statsStream.newLineAtOffset(250, 700);
+            statsStream.newLineAtOffset(250, 725);
             System.out.println("-Set Header Specifications");
 
             //Skills
@@ -749,9 +827,53 @@ public class charactertemplate {
             statsStream.newLine();
             statsStream.showText(pt_heal);
             statsStream.newLine();
-            //Todo: Finish Skills
+            statsStream.showText(pt_intimidate);
             statsStream.newLine();
-
+            statsStream.showText(pt_knowledgeArcana);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeDungeoneering);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeEngineering);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeGeography);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeHistory);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeLocal);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeNature);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeNobility);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgePlanes);
+            statsStream.newLine();
+            statsStream.showText(pt_knowledgeReligion);
+            statsStream.newLine();
+            statsStream.showText(pt_linguistics);
+            statsStream.newLine();
+            statsStream.showText(pt_perception);
+            statsStream.newLine();
+            statsStream.showText(pt_perform);
+            statsStream.newLine();
+            statsStream.showText(pt_profession);
+            statsStream.newLine();
+            statsStream.showText(pt_ride);
+            statsStream.newLine();
+            statsStream.showText(pt_senseMotive);
+            statsStream.newLine();
+            statsStream.showText(pt_sleightOfHand);
+            statsStream.newLine();
+            statsStream.showText(pt_spellcraft);
+            statsStream.newLine();
+            statsStream.showText(pt_stealth);
+            statsStream.newLine();
+            statsStream.showText(pt_survival);
+            statsStream.newLine();
+            statsStream.showText(pt_swim);
+            statsStream.newLine();
+            statsStream.showText(pt_useMagicalDevice);
+            statsStream.newLine();
+            statsStream.newLine();
 
             //Finish Skills Column
             statsStream.endText();
