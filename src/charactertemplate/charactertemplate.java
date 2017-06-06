@@ -10,9 +10,12 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
 
 /**
@@ -260,7 +263,6 @@ public class charactertemplate {
     ////Code Variables\\\\-
     String inputFile;
     String directory = System.getProperty("user.dir");
-    String workingDir;
 
     public charactertemplate() {
     }
@@ -272,6 +274,7 @@ public class charactertemplate {
         a.updateAllVar();
         a.print();
         a.createplaintextpdftemplate();
+        a.createpathfindertemppdf();
     }
 
     //====================\\
@@ -882,7 +885,7 @@ public class charactertemplate {
             System.out.println("-Finished Writing");
             statsStream.close();
             System.out.println("-Closed Writer");
-            plainTextTemp.save(this.directory + "\\output\\pdfs\\new.pdf");
+            plainTextTemp.save(this.directory + "\\output\\pdfs\\" + playerName + "_plainText.pdf");
             System.out.println("Document Created");
             plainTextTemp.close();
             System.out.println("//------------------------------\\\\");
@@ -891,4 +894,33 @@ public class charactertemplate {
         }
     }
     //====================\\
+
+    //====================\\
+    //Export to Pathfinder Character Template PDF
+
+    private void createpathfindertemppdf() throws IOException {
+        System.out.println("");
+        System.out.println("//------------------------------\\\\");
+        File template = new File(this.directory + "\\data\\templates\\default_pathtemp1.pdf");
+        PDDocument newtemp = PDDocument.load(template);
+        System.out.println("Template Loaded");
+        try {
+            PDDocumentCatalog docCatalog = newtemp.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            //Set Player Name
+            PDField pdfield_playerName = acroForm.getField("Player");
+            pdfield_playerName.setValue(playerName);
+            //Set Character Name
+            PDField pdfield_characterName = acroForm.getField("Character Name");
+            pdfield_characterName.setValue(characterName);
+            //Set Alignment
+            PDField pdfield_alignment = acroForm.getField("Alignment");
+            pdfield_alignment.setValue(alignment);
+            newtemp.save(this.directory + "\\output\\pdfs\\" + playerName + "_pathtemp1.pdf"); // save changes to another file
+            newtemp.close();
+        }catch (Exception e) {
+            System.out.println(e);
+
+        }
+    }
 }
