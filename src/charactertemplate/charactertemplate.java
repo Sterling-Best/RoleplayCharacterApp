@@ -908,19 +908,45 @@ public class charactertemplate {
             PDDocumentCatalog docCatalog = newtemp.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
             //Set Player Name
-            PDField pdfield_playerName = acroForm.getField("Player");
-            pdfield_playerName.setValue(playerName);
+            addToPDFTemplate(acroForm, "str", "Player", playerName, 0);
             //Set Character Name
-            PDField pdfield_characterName = acroForm.getField("Character Name");
-            pdfield_characterName.setValue(characterName);
+            addToPDFTemplate(acroForm, "str", "Character Name", characterName, 0);
             //Set Alignment
-            PDField pdfield_alignment = acroForm.getField("Alignment");
-            pdfield_alignment.setValue(alignment);
+            addToPDFTemplate(acroForm, "str", "Alignment", alignment, 0);
+            //Set Race
+            addToPDFTemplate(acroForm, "str", "Race", race, 0);
+            //Set Size
+            addToPDFTemplate(acroForm, "str", "Size", size, 0);
+            //Set Gender
+            addToPDFTemplate(acroForm, "str", "Gender", gender, 0);
+            //Set Age
+            addToPDFTemplate(acroForm, "int", "Age", "", age);
+            //Set Weight
+            addToPDFTemplate(acroForm, "int", "Weight", "", weight);
+            //Set Hair
+            addToPDFTemplate(acroForm, "str", "Hair", hair, 0);
+            //Set Deity
+            addToPDFTemplate(acroForm, "str", "Deity", deity, 0);
+            //Set Homeland
+            addToPDFTemplate(acroForm, "str", "Homeland", homeland, 0);
             newtemp.save(this.directory + "\\output\\pdfs\\" + playerName + "_pathtemp1.pdf"); // save changes to another file
             newtemp.close();
         }catch (Exception e) {
             System.out.println(e);
+        }
+    }
 
+    private void addToPDFTemplate(PDAcroForm acroForm, String type, String fieldName, String valueString, int valueINT ) throws IOException {
+        try {
+            PDField pdfield_target = acroForm.getField(fieldName);
+            if (type == "str") {
+                pdfield_target.setValue(valueString);
+            }
+            else if (type == "int") {
+                pdfield_target.setValue(Integer.toString(valueINT));
+            }
+        }catch (Exception e) {
+            System.out.println(e);
         }
     }
 }
