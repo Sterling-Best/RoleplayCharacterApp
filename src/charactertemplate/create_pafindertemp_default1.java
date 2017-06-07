@@ -135,9 +135,76 @@ public class create_pafindertemp_default1 {
             setFieldName("Heal - Class Skill", 47);
             //Intimidate - Class Skill
             setFieldName("Intimidate - Class Skill", 48);
-
+            //Knowledge (Arcana)  - Class Skill
+            setFieldName("Knowledge (Arcana)  - Class Skill", 49);
+            //Knowledge (Dungeoneering)  - Class Skill
+            setFieldName("Knowledge (Dungeoneering)  - Class Skill", 50);
+            //Knowledge (Engineering)  - Class Skill
+            setFieldName("Knowledge (Engineering)  - Class Skill", 51);
+            //Knowledge (Geography)  - Class Skill
+            setFieldName("Knowledge (Geography)  - Class Skill", 52);
+            //Knowledge (History)  - Class Skill
+            setFieldName("Knowledge (History)  - Class Skill", 53);
+            //Knowledge (Local)  - Class Skill
+            setFieldName("Knowledge (Local)  - Class Skill", 54);
+            //Knowledge (Nature)  - Class Skill
+            setFieldName("Knowledge (Nature)  - Class Skill", 55);
+            //Knowledge (Nobility)  - Class Skill
+            setFieldName("Knowledge (Nobility)  - Class Skill", 56);
+            //Knowledge (Planes)  - Class Skill
+            setFieldName("Knowledge (Planes)  - Class Skill", 57);
+            //Knowledge (Religion)  - Class Skill
+            setFieldName("Knowledge (Religion)  - Class Skill", 58);
+            //Linguistics  - Class Skill
+            setFieldName("Linguistics  - Class Skill", 59);
+            //Perception  - Class Skill
+            setFieldName("Perception  - Class Skill", 60);
+            //Perform1  - Class Skill
+            setFieldName("Perform1  - Class Skill", 61);
+            //Perform2  - Class Skill
+            setFieldName("Perform2  - Class Skill", 62);
+            //Profession1  - Class Skill
+            setFieldName("Profession1  - Class Skill", 63);
+            //Profession2  - Class Skill
+            setFieldName("Profession2  - Class Skill", 64);
+            //Ride  - Class Skill
+            setFieldName("Ride  - Class Skill", 65);
+            //Sense Motive  - Class Skill
+            setFieldName("Sense Motive - Class Skill", 66);
+            //Sleight of Hand  - Class Skill
+            setFieldName("Sleight of Hand  - Class Skill", 67);
+            //Spellcraft  - Class Skill
+            setFieldName("Spellcraft  - Class Skill", 68);
+            //Stealth  - Class Skill
+            setFieldName("Stealth - Class Skill", 69);
+            //Survival  - Class Skill
+            setFieldName("Survival - Class Skill", 70);
+            //Swim  - Class Skill
+            setFieldName("Swim - Class Skill", 71);
+            //Use Magic Device - Class Skill
+            setFieldName("Use Magic Device - Class Skill - Class Skill", 72);
+            //Craft1 - Name
+            setFieldName("Craft1 - Name", 73);
+            //Craft2 - Name
+            setFieldName("Craft2 - Name", 74);
+            //Craft3 - Name
+            setFieldName("Craft3 - Name", 75);
+            //Perform1 - Name
+            setFieldName("Perform1 - Name", 76);
+            //Perform2 - Name
+            setFieldName("Perform2 - Name", 77);
+            //Profession1 - Name
+            setFieldName("Profession1 - Name", 78);
+            //Profession2 - Name
+            setFieldName("Profession2 - Name", 79);
+            //Acrobatics - Total Bonus
+            setFieldName("Acrobatics - Total Bonus", 80);
+            //Appraise - Total Bonus
+            setFieldName("Appraise - Total Bonus", 81);
+            //Bluff - Total Bonus
+            setFieldName("Bluff - Total Bonus", 82);
             //Test
-            setFieldName("Test", 49);
+            setFieldName("Test", 83);
 
             //----------------\\
             newtemp.save(this.directory + "\\data\\templates\\default_pathtemp1.pdf"); // save changes to another file

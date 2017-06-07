@@ -907,10 +907,12 @@ public class charactertemplate {
         try {
             PDDocumentCatalog docCatalog = newtemp.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
+            //Names\\
             //Set Player Name
             addToPDFTemplate(acroForm, "str", "Player", playerName, 0);
             //Set Character Name
             addToPDFTemplate(acroForm, "str", "Character Name", characterName, 0);
+            //Roleplay\\
             //Set Alignment
             addToPDFTemplate(acroForm, "str", "Alignment", alignment, 0);
             //Set Race
@@ -929,6 +931,8 @@ public class charactertemplate {
             addToPDFTemplate(acroForm, "str", "Deity", deity, 0);
             //Set Homeland
             addToPDFTemplate(acroForm, "str", "Homeland", homeland, 0);
+            //Level/Exp/Class\\
+            //
             newtemp.save(this.directory + "\\output\\pdfs\\" + playerName + "_pathtemp1.pdf"); // save changes to another file
             newtemp.close();
         }catch (Exception e) {
