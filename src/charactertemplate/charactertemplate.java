@@ -13,9 +13,15 @@ import jxl.read.biff.BiffException;
 
 =======
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+<<<<<<< HEAD
+>>>>>>> Test1Branch
+=======
+import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 >>>>>>> Test1Branch
 
 
@@ -369,7 +375,10 @@ public class charactertemplate {
     ////Code Variables\\\\-
     String inputFile;
     String directory = System.getProperty("user.dir");
+<<<<<<< HEAD
     String workingDir;
+>>>>>>> Test1Branch
+=======
 >>>>>>> Test1Branch
 
     public charactertemplate() {
@@ -389,6 +398,7 @@ public class charactertemplate {
         a.updateAllVar();
         a.print();
         a.createplaintextpdftemplate();
+        a.createpathfindertemppdf();
     }
 
     //====================\\
@@ -1166,7 +1176,7 @@ public class charactertemplate {
             System.out.println("-Finished Writing");
             statsStream.close();
             System.out.println("-Closed Writer");
-            plainTextTemp.save(this.directory + "\\output\\pdfs\\new.pdf");
+            plainTextTemp.save(this.directory + "\\output\\pdfs\\" + playerName + "_plainText.pdf");
             System.out.println("Document Created");
             plainTextTemp.close();
             System.out.println("//------------------------------\\\\");
@@ -1175,5 +1185,67 @@ public class charactertemplate {
         }
     }
     //====================\\
+<<<<<<< HEAD
+>>>>>>> Test1Branch
+=======
+
+    //====================\\
+    //Export to Pathfinder Character Template PDF
+
+    private void createpathfindertemppdf() throws IOException {
+        System.out.println("");
+        System.out.println("//------------------------------\\\\");
+        File template = new File(this.directory + "\\data\\templates\\default_pathtemp1.pdf");
+        PDDocument newtemp = PDDocument.load(template);
+        System.out.println("Template Loaded");
+        try {
+            PDDocumentCatalog docCatalog = newtemp.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            //Names\\
+            //Set Player Name
+            addToPDFTemplate(acroForm, "str", "Player", playerName, 0);
+            //Set Character Name
+            addToPDFTemplate(acroForm, "str", "Character Name", characterName, 0);
+            //Roleplay\\
+            //Set Alignment
+            addToPDFTemplate(acroForm, "str", "Alignment", alignment, 0);
+            //Set Race
+            addToPDFTemplate(acroForm, "str", "Race", race, 0);
+            //Set Size
+            addToPDFTemplate(acroForm, "str", "Size", size, 0);
+            //Set Gender
+            addToPDFTemplate(acroForm, "str", "Gender", gender, 0);
+            //Set Age
+            addToPDFTemplate(acroForm, "int", "Age", "", age);
+            //Set Weight
+            addToPDFTemplate(acroForm, "int", "Weight", "", weight);
+            //Set Hair
+            addToPDFTemplate(acroForm, "str", "Hair", hair, 0);
+            //Set Deity
+            addToPDFTemplate(acroForm, "str", "Deity", deity, 0);
+            //Set Homeland
+            addToPDFTemplate(acroForm, "str", "Homeland", homeland, 0);
+            //Level/Exp/Class\\
+            //
+            newtemp.save(this.directory + "\\output\\pdfs\\" + playerName + "_pathtemp1.pdf"); // save changes to another file
+            newtemp.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void addToPDFTemplate(PDAcroForm acroForm, String type, String fieldName, String valueString, int valueINT ) throws IOException {
+        try {
+            PDField pdfield_target = acroForm.getField(fieldName);
+            if (type == "str") {
+                pdfield_target.setValue(valueString);
+            }
+            else if (type == "int") {
+                pdfield_target.setValue(Integer.toString(valueINT));
+            }
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 >>>>>>> Test1Branch
 }
