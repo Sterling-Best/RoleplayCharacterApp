@@ -203,8 +203,150 @@ public class create_pafindertemp_default1 {
             setFieldName("Appraise - Total Bonus", 81);
             //Bluff - Total Bonus
             setFieldName("Bluff - Total Bonus", 82);
-            //Test
-            setFieldName("Test", 83);
+            //Climb - Total Bonus
+            setFieldName("Climb - Total Bonus", 83);
+            //Craft1 - Total Bonus
+            setFieldName("Craft1 - Total Bonus", 84);
+            //Craft2 - Total Bonus
+            setFieldName("Craft2 - Total Bonus", 85);
+            //Craft3 - Total Bonus
+            setFieldName("Craft3 - Total Bonus", 86);
+            //Diplomacy - Total Bonus
+            setFieldName("Diplomacy - Total Bonus", 87);
+            //Disable Device - Total Bonus
+            setFieldName("Disable Device - Total Bonus", 88);
+            //Disguise - Total Bonus
+            setFieldName("Disguise - Total Bonus", 89);
+            //Escape Artist - Total Bonus
+            setFieldName("Escape Artist - Total Bonus", 90);
+            //Fly - Total Bonus
+            setFieldName("Fly - Total Bonus", 91);
+            //Handle Animal - Total Bonus
+            setFieldName("Handle Animal - Total Bonus", 92);
+            //Heal - Total Bonus
+            setFieldName("Heal - Total Bonus", 93);
+            //Intimidate - Total Bonus
+            setFieldName("Intimidate - Total Bonus", 94);
+            //Knowledge (Arcana) - Total Bonus
+            setFieldName("Knowledge (Arcana) - Total Bonus", 95);
+            //Knowledge (Dungeoneering) - Total Bonus
+            setFieldName("Knowledge (Dungeoneering) - Total Bonus", 96);
+            //Knowledge (Engineering) - Total Bonus
+            setFieldName("Knowledge (Engineering) - Total Bonus", 97);
+            //Knowledge (Geography) - Total Bonus
+            setFieldName("Knowledge (Geography) - Total Bonus", 98);
+            //Knowledge (History) - Total Bonus
+            setFieldName("Knowledge (History) - Total Bonus", 99);
+            //Knowledge (Local) - Total Bonus
+            setFieldName("Knowledge (Local) - Total Bonus", 100);
+            //Knowledge (Nature) - Total Bonus
+            setFieldName("Knowledge (Nature) - Total Bonus", 101);
+            //Knowledge (Nobility) - Total Bonus
+            setFieldName("Knowledge (Nobility) - Total Bonus", 102);
+            //Knowledge (Plants) - Total Bonus
+            setFieldName("Knowledge (Plants) - Total Bonus", 103);
+            //Knowledge (Religion) - Total Bonus
+            setFieldName("Knowledge (Religion) - Total Bonus", 104);
+            //Linguistics - Total Bonus
+            setFieldName("Linguistics - Total Bonus", 105);
+            //Perception - Total Bonus
+            setFieldName("Perception - Total Bonus", 106);
+            //Perform1 - Total Bonus
+            setFieldName("Perform1 - Total Bonus", 107);
+            //Perform2 - Total Bonus
+            setFieldName("Perform2 - Total Bonus", 108);
+            //Profession1 - Total Bonus
+            setFieldName("Profession1 - Total Bonus", 109);
+            //Profession2 - Total Bonus
+            setFieldName("Profession2 - Total Bonus", 110);
+            //Ride - Total Bonus
+            setFieldName("Ride - Total Bonus", 111);
+            //Sense Motive - Total Bonus
+            setFieldName("Sense Motive - Total Bonus", 112);
+            //Sleight of Hand - Total Bonus
+            setFieldName("Sleight of Hand - Total Bonus", 113);
+            //Spellcraft - Total Bonus
+            setFieldName("Spellcraft - Total Bonus", 114);
+            //Stealth - Total Bonus
+            setFieldName("Stealth - Total Bonus", 115);
+            //Survival - Total Bonus
+            setFieldName("Survival - Total Bonus", 116);
+            //Swim - Total Bonus
+            setFieldName("Swim - Total Bonus", 117);
+            //Use Magical Device - Total Bonus
+            setFieldName("Use Magical Device - Total Bonus", 118);
+            //\slot 119 is null type... reason unknown
+            //Acrobatics - Ability Modifier
+            setFieldName("Acrobatics - Ability Modifier", 120);
+            //Appraise - Ability Modifier
+            setFieldName("Appraise - Ability Modifier", 120);
+            //Bluff - Ability Modifier
+            setFieldName("Bluff - Ability Modifier", 120);
+            //Climb - Ability Modifier
+            setFieldName("Climb - Ability Modifier", 120);
+            //Craft1 - Ability Modifier
+            setFieldName("Craft1 - Ability Modifier", 120);
+            //Craft2 - Ability Modifier
+            setFieldName("Craft2 - Ability Modifier", 120);
+            //Craft3 - Ability Modifier
+            setFieldName("Craft3 - Ability Modifier", 120);
+            //Diplomacy - Ability Modifier
+            setFieldName("Diplomacy - Ability Modifier", 120);
+            //Disable Device - Ability Modifier
+            setFieldName("Disable Device - Ability Modifier", 120);
+            //Disguise - Ability Modifier
+            setFieldName("Disguise - Ability Modifier", 120);
+            //Escape Artist - Ability Modifier
+            setFieldName("Escape Artist - Ability Modifier", 120);
+            //Fly - Ability Modifier
+            setFieldName("Fly - Ability Modifier", 120);
+            //Handle Animal - Ability Modifier
+            setFieldName("Handle Animal - Ability Modifier", 120);
+            //Heal - Ability Modifier
+            setFieldName("Heal - Ability Modifier", 120);
+            //Intimidate - Ability Modifier
+            setFieldName("Intimidate - Ability Modifier", 120);
+            //Knowledge (Arcana) - Ability Modifier
+            setFieldName("Knowledge (Arcana) - Ability Modifier", 95);
+            //Knowledge (Dungeoneering) - Ability Modifier
+            setFieldName("Knowledge (Dungeoneering) - Ability Modifier", 96);
+            //Knowledge (Engineering) - Ability Modifier
+            setFieldName("Knowledge (Engineering) - Ability Modifier", 97);
+            //Knowledge (Geography) - Ability Modifier
+            setFieldName("Knowledge (Geography) - Ability Modifier", 98);
+            //Knowledge (History) - Ability Modifier
+            setFieldName("Knowledge (History) - Ability Modifier", 99);
+            //Knowledge (Local) - Ability Modifier
+            setFieldName("Knowledge (Local) - Ability Modifier", 100);
+            //Knowledge (Nature) - Ability Modifier
+            setFieldName("Knowledge (Nature) - Ability Modifier", 101);
+            //Knowledge (Nobility) - Ability Modifier
+            setFieldName("Knowledge (Nobility) - Ability Modifier", 102);
+            //Knowledge (Plants) - Ability Modifier
+            setFieldName("Knowledge (Plants) - Ability Modifier", 103);
+            //Knowledge (Religion) - Ability Modifier
+            setFieldName("Knowledge (Religion) - Ability Modifier", 104);
+            //Linguistics - Ability Modifier
+            setFieldName("Linguistics - Ability Modifier", 104);
+            //Perception - Ability Modifier
+            setFieldName("Perception - Ability Modifier", 104);
+            //Perform1 - Ability Modifier
+            setFieldName("Perform1 - Ability Modifier", 104);
+            //Perform2 - Ability Modifier
+            setFieldName("Perform2 - Ability Modifier", 104);
+            //Profession1 - Ability Modifier
+            setFieldName("Profession1 - Ability Modifier", 104);
+            //Profession2 - Ability Modifier
+            setFieldName("Profession2 - Ability Modifier", 104);
+            //Ride - Ability Modifier
+            setFieldName("Ride - Ability Modifier", 104);
+            //Sense Motive - Ability Modifier
+            setFieldName("Sense Motive - Ability Modifier", 104);
+            //Test - Ability Modifier
+            setFieldName("Test - Ability Modifier", 104);
+
+
+
 
             //----------------\\
             newtemp.save(this.directory + "\\data\\templates\\default_pathtemp1.pdf"); // save changes to another file
@@ -220,6 +362,7 @@ public class create_pafindertemp_default1 {
             Object obj = fieldList.get(fieldNum);
             PDField field = (PDField) obj;
             System.out.println(field.getAlternateFieldName() + " confirmed");
+            System.out.println(field.getFieldType() + " type");
             field.setAlternateFieldName(fieldName);
             System.out.println(field.getAlternateFieldName() + " changed");
             if (field.getFieldType() == "Btn") {
